@@ -8,5 +8,5 @@ public class Producto{
 	private String tipoProducto;
 	private String descripcion;
 	private float precio;
-	private boolean ventaConReceta;
+	private String ventaConReceta;
 }
