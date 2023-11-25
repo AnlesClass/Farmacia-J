@@ -10,7 +10,7 @@ public class Cliente {
     private String nombre;
     private String apellido;
     private int edad;
-
+    
     public String[] lista(){
         var lista = new String[5];
         lista[0] = String.valueOf(idCliente);
