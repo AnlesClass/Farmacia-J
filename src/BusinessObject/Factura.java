@@ -5,12 +5,13 @@ import java.time.LocalTime;
 import lombok.Data;
 
 @Data
-public class Factura{
-	private int idFactura;
-	private int RUC;
-	private int telefono;
-	private String nombreCliente;
-	private LocalDate fechaExpedicion;
-        private LocalTime horaExpedicion;
-	private float importe;
+public class Factura {
+
+    //private int idFactura;
+    private int ruc;
+    private int telefono;
+    private String nombreCliente;
+    private LocalDate fechaExpedicion;
+    private LocalTime horaExpedicion;
+    private float importe;
 }
