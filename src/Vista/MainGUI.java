@@ -81,7 +81,7 @@ public class MainGUI extends javax.swing.JFrame {
         );
         pnlOperacionesRecientesLayout.setVerticalGroup(
             pnlOperacionesRecientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 223, Short.MAX_VALUE)
         );
 
         pnlWorkbench.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -95,7 +95,7 @@ public class MainGUI extends javax.swing.JFrame {
         );
         pnlWorkbenchLayout.setVerticalGroup(
             pnlWorkbenchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 227, Short.MAX_VALUE)
+            .addGap(0, 223, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout tbpnlVentaLayout = new javax.swing.GroupLayout(tbpnlVenta);
@@ -105,11 +105,9 @@ public class MainGUI extends javax.swing.JFrame {
             .addGroup(tbpnlVentaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(tbpnlVentaLayout.createSequentialGroup()
-                        .addComponent(lblOperacionesRecientes)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblOperacionesRecientes)
                     .addComponent(pnlOperacionesRecientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnNuevoPedido)
                     .addComponent(pnlWorkbench, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -124,8 +122,8 @@ public class MainGUI extends javax.swing.JFrame {
                     .addComponent(btnNuevoPedido))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlWorkbench, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                    .addComponent(pnlOperacionesRecientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnlWorkbench, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlOperacionesRecientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
