@@ -13,5 +13,17 @@ public class Factura {
     private float importe;
     private int telefono;
     private LocalDate fechaExpedicion;
-    private LocalTime horaExpedicion; 
+    private LocalTime horaExpedicion;
+
+    public String[] lista() {
+        var lista = new String[7];
+        lista[0] = String.valueOf(idFactura);
+        lista[1] = nombreCliente;
+        lista[2] = String.valueOf(ruc);
+        lista[3] = String.valueOf(importe);
+        lista[4] = String.valueOf(telefono);
+        lista[5] = String.valueOf(fechaExpedicion);
+        lista[6] = String.valueOf(horaExpedicion);
+        return lista;
+    }
 }
