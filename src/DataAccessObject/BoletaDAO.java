@@ -17,7 +17,7 @@ public class BoletaDAO implements IOperaciones<Boleta> {
         boolean estado = false;
         try {
             String sql = "INSERT INTO Boleta(Importe, FechaExpedicion, HoraExpedicion) values (?, ?, ?)";
-            PreparedStatement ps = Conexion.conexionSQL().prepareStatement(sql);
+            PreparedStatement ps = Conexion.conexionMySQL().prepareStatement(sql);
             ps.setFloat(1, entidad.getImporte());
             ps.setDate(2, Date.valueOf(entidad.getFechaExpedicion()));
             ps.setTime(3, Time.valueOf(entidad.getHoraExpedicion()));
@@ -38,7 +38,7 @@ public class BoletaDAO implements IOperaciones<Boleta> {
     public ArrayList<Boleta> listarTodo() {
         var lista = new ArrayList<Boleta>();
         try {
-            PreparedStatement ps = Conexion.conexionSQL().prepareStatement("SELECT * FROM Boleta");
+            PreparedStatement ps = Conexion.conexionMySQL().prepareStatement("SELECT * FROM Boleta");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 lista.add(boletaTemp(rs));
