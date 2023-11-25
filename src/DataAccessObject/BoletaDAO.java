@@ -65,13 +65,6 @@ public class BoletaDAO implements IOperaciones<Boleta> {
     //Lo que contiene lo he hecho yo mismo.
     @Override
     public String[] toArray() {
-        try {
-            PreparedStatement ps = Conexion.conexionMySQL().prepareStatement("SELECT * FROM Boleta WHERE idBoleta = ?");
-            
-            ResultSet rs = ps.executeQuery();
-        } catch (SQLException ex) {
-            System.out.println("Error en 'toArray': " + ex.toString());
-        }
         return null;
     }
 
