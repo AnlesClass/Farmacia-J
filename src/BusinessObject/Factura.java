@@ -7,11 +7,11 @@ import lombok.Data;
 @Data
 public class Factura {
 
-    //private int idFactura;
-    private int ruc;
-    private int telefono;
+    private int idFactura;
     private String nombreCliente;
-    private LocalDate fechaExpedicion;
-    private LocalTime horaExpedicion;
+    private int ruc;
     private float importe;
+    private int telefono;
+    private LocalDate fechaExpedicion;
+    private LocalTime horaExpedicion; 
 }

@@ -7,6 +7,7 @@ import java.sql.Array;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.sql.Date;
 
 public class PedidoDAO implements IOperaciones<Pedido> {
 
@@ -14,8 +15,8 @@ public class PedidoDAO implements IOperaciones<Pedido> {
     public boolean insertar(Pedido entidad) {
         boolean estado = false;
         try {
-            PreparedStatement ps = Conexion.conexionMySQL().prepareStatement("INSERT INTO Pedido(Cantidad) values (?)");
-            ps.setInt(1,  entidad.getCantidad());
+            PreparedStatement ps = Conexion.conexionMySQL().prepareStatement("INSERT INTO Pedido(FechaPedido) values (?)");
+            ps.setDate(1,  Date.valueOf(entidad.getFechaPedido()));
             estado = ps.executeUpdate()>0;
         } catch (SQLException ex) {
             System.out.println("ERROR: "+ex.toString());
