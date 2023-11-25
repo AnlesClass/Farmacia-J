@@ -15,9 +15,8 @@ public class ProductoDAO implements IOperaciones<Producto> {
     public boolean insertar(Producto entidad) {
         boolean estado = false;
         try {
-            Conexion cn = new Conexion();
             String sql = "INSERT INTO Producto (TipoProducto, Descripcion, Precio, VentaConReceta) values (?, ?, ?, ?)";
-            PreparedStatement ps = cn.conexionSQL().prepareStatement(sql);
+            PreparedStatement ps = Conexion.conexionSQL().prepareStatement(sql);
             ps.setString(1, entidad.getTipoProducto());
             ps.setString(2, entidad.getDescripcion());
             ps.setFloat(3, entidad.getPrecio());

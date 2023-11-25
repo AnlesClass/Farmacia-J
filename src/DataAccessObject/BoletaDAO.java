@@ -16,9 +16,8 @@ public class BoletaDAO implements IOperaciones<Boleta> {
     public boolean insertar(Boleta entidad) {
         boolean estado = false;
         try {
-            Conexion cn = new Conexion();
             String sql = "INSERT INTO Boleta(Importe, FechaExpedicion, HoraExpedicion) values (?, ?, ?)";
-            PreparedStatement ps = cn.conexionSQL().prepareStatement(sql);
+            PreparedStatement ps = Conexion.conexionSQL().prepareStatement(sql);
             ps.setFloat(1, entidad.getImporte());
             ps.setDate(2, Date.valueOf(entidad.getFechaExpedicion()));
             ps.setTime(3, Time.valueOf(entidad.getHoraExpedicion()));
@@ -39,8 +38,7 @@ public class BoletaDAO implements IOperaciones<Boleta> {
     public ArrayList<Boleta> listarTodo() {
         var lista = new ArrayList<Boleta>();
         try {
-            Conexion cn = new Conexion();
-            PreparedStatement ps = cn.conexionSQL().prepareStatement("SELECT * FROM Boleta");
+            PreparedStatement ps = Conexion.conexionSQL().prepareStatement("SELECT * FROM Boleta");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 lista.add(boletaTemp(rs));
@@ -67,13 +65,6 @@ public class BoletaDAO implements IOperaciones<Boleta> {
     //Lo que contiene lo he hecho yo mismo.
     @Override
     public String[] toArray() {
-        try {
-            Conexion cn = new Conexion();
-            PreparedStatement ps = cn.conexionSQL().prepareStatement("SELECT * FROM Boleta WHERE idBoleta = ?");
-            ResultSet rs = ps.executeQuery();
-        } catch (SQLException ex) {
-            System.out.println("Error en 'toArray': " + ex.toString());
-        }
         return null;
     }
 
