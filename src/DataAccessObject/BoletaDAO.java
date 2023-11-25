@@ -17,11 +17,11 @@ public class BoletaDAO implements IOperaciones<Boleta> {
         boolean estado = false;
         try {
             String sql = "INSERT INTO Boleta(Importe, FechaExpedicion, HoraExpedicion) values (?, ?, ?)";
-            PreparedStatement ps = Conexion.conexionMySQL().prepareStatement(sql);
-            ps.setFloat(1, entidad.getImporte());
-            ps.setDate(2, Date.valueOf(entidad.getFechaExpedicion()));
-            ps.setTime(3, Time.valueOf(entidad.getHoraExpedicion()));
-            estado = ps.executeUpdate() > 0;
+            PreparedStatement ps5 = Conexion.conexionMySQL().prepareStatement(sql);
+            ps5.setFloat(1, entidad.getImporte());
+            ps5.setDate(2, Date.valueOf(entidad.getFechaExpedicion()));
+            ps5.setTime(3, Time.valueOf(entidad.getHoraExpedicion()));
+            estado = ps5.executeUpdate() > 0;
         } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.toString());
         }
