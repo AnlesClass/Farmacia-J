@@ -11,7 +11,7 @@ import java.sql.Date;
 import java.sql.Time;
 
 public class BoletaDAO implements IOperaciones<Boleta> {
-
+    //importe, fechae, horae
     @Override
     public boolean insertar(Boleta entidad) {
         boolean estado = false;

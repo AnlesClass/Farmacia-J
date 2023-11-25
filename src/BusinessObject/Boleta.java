@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class Boleta {
-
+    
     private int idBoleta;
     private float importe;
     private LocalDate fechaExpedicion;
