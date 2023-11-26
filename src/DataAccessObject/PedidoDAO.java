@@ -57,7 +57,7 @@ public class PedidoDAO implements IOperaciones<Pedido> {
     }
 
     @Override
-    public ArrayList<Pedido> buscar(String busca) {
+    public ArrayList<Pedido> buscarId(int busca) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

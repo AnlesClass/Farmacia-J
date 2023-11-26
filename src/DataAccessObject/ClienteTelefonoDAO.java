@@ -7,8 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ClienteTelefonoDAO implements IOperaciones<ClienteTelefono> {
 
@@ -50,12 +48,12 @@ public class ClienteTelefonoDAO implements IOperaciones<ClienteTelefono> {
     }
 
     @Override
-    public ArrayList<ClienteTelefono> buscar(String busca) {
+    public ArrayList<ClienteTelefono> buscarId(int busca) {
         var lista = new ArrayList<ClienteTelefono>();
         try {
             String sql = "SELECT * FROM ClienteTelefono WHERE idCliente = ?";
             PreparedStatement ps = Conexion.conexionMySQL().prepareStatement(sql);
-            ps.setString(1, busca);
+            ps.setInt(1, busca);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 lista.add(crearEntidad(rs));

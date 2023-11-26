@@ -63,7 +63,7 @@ public class BoletaDAO implements IOperaciones<Boleta> {
     }
 
     @Override
-    public ArrayList<Boleta> buscar(String busca) {
+    public ArrayList<Boleta> buscarId(int busca) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

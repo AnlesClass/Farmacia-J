@@ -48,6 +48,9 @@ public class MainGUI extends javax.swing.JFrame {
         btnNuevoPedido = new javax.swing.JButton();
         pnlOperacionesRecientes = new javax.swing.JPanel();
         pnlWorkbench = new javax.swing.JPanel();
+        tfdBuscandoDNI = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         tbpnlRegistro = new javax.swing.JPanel();
         mnbrMenu = new javax.swing.JMenuBar();
         mnArchivo = new javax.swing.JMenu();
@@ -98,6 +101,15 @@ public class MainGUI extends javax.swing.JFrame {
             .addGap(0, 223, Short.MAX_VALUE)
         );
 
+        jButton1.setText("BuscarTelefono");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Prueba: Buscando Telefono por DNI");
+
         javax.swing.GroupLayout tbpnlVentaLayout = new javax.swing.GroupLayout(tbpnlVenta);
         tbpnlVenta.setLayout(tbpnlVentaLayout);
         tbpnlVentaLayout.setHorizontalGroup(
@@ -107,23 +119,38 @@ public class MainGUI extends javax.swing.JFrame {
                 .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblOperacionesRecientes)
                     .addComponent(pnlOperacionesRecientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(6, 121, Short.MAX_VALUE)
                 .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnNuevoPedido)
                     .addComponent(pnlWorkbench, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tbpnlVentaLayout.createSequentialGroup()
+                        .addComponent(tfdBuscandoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1))
+                    .addComponent(jLabel1))
+                .addGap(61, 61, 61))
         );
         tbpnlVentaLayout.setVerticalGroup(
             tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tbpnlVentaLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblOperacionesRecientes)
-                    .addComponent(btnNuevoPedido))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlWorkbench, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlOperacionesRecientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(tbpnlVentaLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblOperacionesRecientes)
+                            .addComponent(btnNuevoPedido))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnlWorkbench, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlOperacionesRecientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(tbpnlVentaLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(10, 10, 10)
+                        .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tfdBuscandoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1))))
                 .addContainerGap())
         );
 
@@ -133,11 +160,11 @@ public class MainGUI extends javax.swing.JFrame {
         tbpnlRegistro.setLayout(tbpnlRegistroLayout);
         tbpnlRegistroLayout.setHorizontalGroup(
             tbpnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 746, Short.MAX_VALUE)
+            .addGap(0, 1280, Short.MAX_VALUE)
         );
         tbpnlRegistroLayout.setVerticalGroup(
             tbpnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 276, Short.MAX_VALUE)
+            .addGap(0, 666, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Registro", tbpnlRegistro);
@@ -170,16 +197,16 @@ public class MainGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1280, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void btnNuevoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoPedidoActionPerformed
         //Iniciar JFrame para agregar producto
         NuevoPedidoGUI wdNuevoPedido = new NuevoPedidoGUI();
@@ -190,25 +217,32 @@ public class MainGUI extends javax.swing.JFrame {
         pnlWorkbench.revalidate(); //Sirve para reorganizar la jerarquía de elementos Swing.
         pnlWorkbench.repaint(); //Sirve para 'redibujar' la parte gráfica de los elementos Swing.
         //Bloquear botón "Agregar"
-        if(btnNuevoPedido.getText().equals("Nuevo Pedido")){
+        if (btnNuevoPedido.getText().equals("Nuevo Pedido")) {
             btnNuevoPedido.setEnabled(false);
-        } 
+        }
     }//GEN-LAST:event_btnNuevoPedidoActionPerformed
 
     private void mnitNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitNuevoProductoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mnitNuevoProductoActionPerformed
-    
-    public static void setEstadoBtnNuevoPedido(boolean estado){
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Prueba Telefono
+        if (tfdBuscandoDNI.getText().length() > 0) {
+            ModificarTelefono mt = new ModificarTelefono(tfdBuscandoDNI.getText());
+            mt.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public static void setEstadoBtnNuevoPedido(boolean estado) {
         btnNuevoPedido.setEnabled(estado);
     }
-    /**
-     * @param args the command line arguments
-     */
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JButton btnNuevoPedido;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblOperacionesRecientes;
     private javax.swing.JMenu mnArchivo;
@@ -221,5 +255,6 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnlWorkbench;
     private javax.swing.JPanel tbpnlRegistro;
     private javax.swing.JPanel tbpnlVenta;
+    private javax.swing.JTextField tfdBuscandoDNI;
     // End of variables declaration//GEN-END:variables
 }

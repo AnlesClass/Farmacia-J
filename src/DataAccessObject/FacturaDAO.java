@@ -70,7 +70,7 @@ public class FacturaDAO implements IOperaciones<Factura> {
     }
 
     @Override
-    public ArrayList<Factura> buscar(String busca) {
+    public ArrayList<Factura> buscarId(int busca) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

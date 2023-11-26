@@ -80,7 +80,7 @@ public class ProductoDAO implements IOperaciones<Producto> {
     }
 
     @Override
-    public ArrayList<Producto> buscar(String busca) {
+    public ArrayList<Producto> buscarId(int busca) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
    

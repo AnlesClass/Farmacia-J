@@ -1,18 +1,15 @@
 package Main;
 
-import BusinessObject.Producto;
-import DataAccessObject.ProductoDAO;
+import Vista.MainGUI;
+import javax.swing.UIManager;
 
 public class Main {
 
     public static void main(String[] args) {
+        //UIManager.setLookAndFeel();
         
-        Producto pd = new Producto();
-        pd.setTipoProducto("UWU");
-        pd.setDescripcion("Agigantador de penes");
-        pd.setPrecio(25.5f);
-        pd.setVentaConReceta(true);
-        ProductoDAO pdDao = new ProductoDAO();
-        pdDao.insertar(pd);
+        MainGUI ventana = new MainGUI();
+        ventana.setLocationRelativeTo(null);
+        ventana.setVisible(true);
     }
 }
