@@ -1,5 +1,8 @@
 package BusinessObject;
 
+import lombok.Data;
+
+@Data
 public class ClienteTelefono {
 
     private int idClienteTelefono;

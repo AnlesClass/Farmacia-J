@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ProductoDAO implements IOperaciones<Producto> {
 
@@ -66,13 +64,8 @@ public class ProductoDAO implements IOperaciones<Producto> {
         return lista;
     }
 
-    @Override
-    public String[] toArray() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
     private Producto crearEntidad(ResultSet r) {
-        var entidad = new Producto();
+        Producto entidad = new Producto();
         try {
             entidad.setIdProducto(r.getInt(1));
             entidad.setNombre(r.getString(2));
@@ -84,6 +77,11 @@ public class ProductoDAO implements IOperaciones<Producto> {
             System.out.println("ERROR: " + ex.toString());
         }
         return entidad;
+    }
+
+    @Override
+    public ArrayList<Producto> buscar(String busca) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
    
 }

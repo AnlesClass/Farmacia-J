@@ -9,9 +9,10 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Date;
 import java.sql.Time;
+import javax.swing.JOptionPane;
 
 public class BoletaDAO implements IOperaciones<Boleta> {
-    //importe, fechae, horae
+
     @Override
     public boolean insertar(Boleta entidad) {
         boolean estado = false;
@@ -30,7 +31,7 @@ public class BoletaDAO implements IOperaciones<Boleta> {
 
     @Override
     public boolean modificar(Boleta entidad) {
-        System.out.println("Método no disponible para BoletaDAO");
+        JOptionPane.showMessageDialog(null, "No es modificable. Se devolverá <false>.", "Modificar Boleta", 1);
         return false;
     }
 
@@ -41,7 +42,7 @@ public class BoletaDAO implements IOperaciones<Boleta> {
             PreparedStatement ps = Conexion.conexionMySQL().prepareStatement("SELECT * FROM Boleta");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                lista.add(boletaTemp(rs));
+                lista.add(crearEntidad(rs));
             }
         } catch (SQLException ex) {
             System.out.println("Error al listar Boletas: " + ex.toString());
@@ -49,23 +50,21 @@ public class BoletaDAO implements IOperaciones<Boleta> {
         return lista;
     }
 
-    private Boleta boletaTemp(ResultSet rs) {
-        Boleta blt = new Boleta();
+    private Boleta crearEntidad(ResultSet rs) {
+        Boleta entidad = new Boleta();
         try {
-            blt.setImporte(rs.getFloat(1));
-            blt.setFechaExpedicion(rs.getDate(2).toLocalDate());
-            blt.setHoraExpedicion(rs.getTime(3).toLocalTime());
+            entidad.setImporte(rs.getFloat(1));
+            entidad.setFechaExpedicion(rs.getDate(2).toLocalDate());
+            entidad.setHoraExpedicion(rs.getTime(3).toLocalTime());
         } catch (SQLException ex) {
-            System.out.println("Error al crear 'boletaTemp': " + ex.toString());
+            System.out.println("Error al crear entidad 'Boleta': " + ex.toString());
         }
-        return blt;
+        return entidad;
     }
 
-    //Presumo que este método sirve para agarrar un resultset y pasar sus campos a String[].
-    //Lo que contiene lo he hecho yo mismo.
     @Override
-    public String[] toArray() {
-        return null;
+    public ArrayList<Boleta> buscar(String busca) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

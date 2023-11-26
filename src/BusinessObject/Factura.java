@@ -14,7 +14,7 @@ public class Factura {
     private int telefono;
     private LocalDate fechaExpedicion;
     private LocalTime horaExpedicion;
-
+    
     public String[] lista() {
         var lista = new String[7];
         lista[0] = String.valueOf(idFactura);
