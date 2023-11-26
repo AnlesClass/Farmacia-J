@@ -13,5 +13,5 @@ public class ClienteTelefono {
         lista[0] = String.valueOf(idClienteTelefono);
         lista[1] = String.valueOf(telefono);
         return lista;
-    } 
+    }
 }
