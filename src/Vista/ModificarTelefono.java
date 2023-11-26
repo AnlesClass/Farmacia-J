@@ -98,15 +98,15 @@ public class ModificarTelefono extends javax.swing.JFrame {
         //Lo primero es sacar el id del cliente por el DNI.
         Cliente cliente = new ClienteDAO().buscarDNI(dniBusca);
         int idCliente = cliente.getIdCliente();
-
-        DefaultTableModel tablaModelo = (DefaultTableModel) tblTelefono.getModel();
-        tablaModelo.setRowCount(0);
-
+        String nombreCliente = cliente.getNombre() + " " + cliente.getApellido();
         var lista = new ClienteTelefonoDAO().buscarId(idCliente);
         var vector = new String[2];
 
+        DefaultTableModel tablaModelo = (DefaultTableModel) tblTelefono.getModel();
+        tablaModelo.setRowCount(0);      
+
         for (ClienteTelefono entidad : lista) {
-            vector[0] = cliente.getNombre() + " " + cliente.getApellido();
+            vector[0] = nombreCliente;
             vector[1] = entidad.lista()[1];
             tablaModelo.addRow(vector);
         }

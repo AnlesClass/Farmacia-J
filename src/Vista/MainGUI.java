@@ -62,6 +62,7 @@ public class MainGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Farmacia J&J - V.1.0.");
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
 
         lblOperacionesRecientes.setText("Operaciones Recientes");
 
@@ -101,6 +102,12 @@ public class MainGUI extends javax.swing.JFrame {
             .addGap(0, 223, Short.MAX_VALUE)
         );
 
+        tfdBuscandoDNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfdBuscandoDNIKeyTyped(evt);
+            }
+        });
+
         jButton1.setText("BuscarTelefono");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,11 +126,11 @@ public class MainGUI extends javax.swing.JFrame {
                 .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblOperacionesRecientes)
                     .addComponent(pnlOperacionesRecientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 121, Short.MAX_VALUE)
+                .addGap(6, 81, Short.MAX_VALUE)
                 .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnNuevoPedido)
                     .addComponent(pnlWorkbench, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tbpnlVentaLayout.createSequentialGroup()
                         .addComponent(tfdBuscandoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,11 +167,11 @@ public class MainGUI extends javax.swing.JFrame {
         tbpnlRegistro.setLayout(tbpnlRegistroLayout);
         tbpnlRegistroLayout.setHorizontalGroup(
             tbpnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
+            .addGap(0, 1200, Short.MAX_VALUE)
         );
         tbpnlRegistroLayout.setVerticalGroup(
             tbpnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 666, Short.MAX_VALUE)
+            .addGap(0, 646, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Registro", tbpnlRegistro);
@@ -197,7 +204,7 @@ public class MainGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1280, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,6 +240,15 @@ public class MainGUI extends javax.swing.JFrame {
             mt.setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tfdBuscandoDNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfdBuscandoDNIKeyTyped
+        //Detener el ingreso de Datos en DNI
+        if(tfdBuscandoDNI.getText().length() == 8){
+            evt.consume();
+        }else if(tfdBuscandoDNI.getText().length() > 8){
+            tfdBuscandoDNI.setText("JAJAJAJA MONGOL");
+        }
+    }//GEN-LAST:event_tfdBuscandoDNIKeyTyped
 
     public static void setEstadoBtnNuevoPedido(boolean estado) {
         btnNuevoPedido.setEnabled(estado);
