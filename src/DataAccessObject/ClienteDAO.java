@@ -99,4 +99,18 @@ public class ClienteDAO implements IOperaciones<Cliente> {
         }
         return cliente;
     }
+
+    public int ultimoID() {
+        try {
+            String sql = "SELECT MAX(idCliente) FROM Cliente";
+            PreparedStatement ps = Conexion.conexionMySQL().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar ultimo id: " + ex.toString());
+        }
+        return -1; //retorna -1 si hay algun error
+    }
 }

@@ -1,5 +1,6 @@
 package DataAccessObject;
 
+import BusinessObject.Cliente;
 import BusinessObject.ClienteTelefono;
 import Persistencia.Conexion;
 import TransferObject.IOperaciones;
@@ -74,4 +75,17 @@ public class ClienteTelefonoDAO implements IOperaciones<ClienteTelefono> {
         }
         return entidad;
     };
+     public boolean insertar(int idCliente,ClienteTelefono entidad) {
+        boolean estado = false;
+        String sql = "INSERT INTO ClienteTelefono (IdCliente,Telefono) values (?,?)";
+        try {
+            PreparedStatement ps = Conexion.conexionMySQL().prepareStatement(sql);
+            ps.setInt(1, idCliente);
+            ps.setInt(2, entidad.getTelefono());
+            estado = ps.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.toString());
+        }
+        return estado;
+    }
 }
