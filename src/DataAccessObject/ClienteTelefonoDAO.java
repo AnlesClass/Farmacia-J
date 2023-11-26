@@ -73,5 +73,5 @@ public class ClienteTelefonoDAO implements IOperaciones<ClienteTelefono> {
             System.out.println("ERROR: "+ex.toString());
         }
         return entidad;
-    };
+    };  
 }

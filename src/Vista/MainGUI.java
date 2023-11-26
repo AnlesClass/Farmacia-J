@@ -1,7 +1,17 @@
 package Vista;
 
+import BusinessObject.ClienteTelefono;
+import DataAccessObject.ClienteTelefonoDAO;
+import Persistencia.Conexion;
 import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -9,11 +19,15 @@ import javax.swing.JOptionPane;
  */
 public class MainGUI extends javax.swing.JFrame {
 
+    DefaultTableModel tablaModelo;
+
     /**
      * Creates new form GUI
      */
     public MainGUI() {
         initComponents();
+        tablaModelo = (DefaultTableModel) tblCliente.getModel();
+
     }
 
     /**
@@ -31,11 +45,19 @@ public class MainGUI extends javax.swing.JFrame {
         btnNuevoPedido = new javax.swing.JButton();
         pnlOperacionesRecientes = new javax.swing.JPanel();
         pnlWorkbench = new javax.swing.JPanel();
+        tbpnlConsultas = new javax.swing.JPanel();
         tfdBuscandoDNI = new javax.swing.JTextField();
-        btnBuscarDNI = new javax.swing.JButton();
         pruebaLblTelefono = new javax.swing.JLabel();
+        btnBuscarDNI = new javax.swing.JButton();
         lblBBuscarError = new javax.swing.JLabel();
-        tbpnlRegistro = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        tfdDNIBusca = new javax.swing.JTextField();
+        tfdNombreBusca = new javax.swing.JTextField();
+        tfdApellidoBusca = new javax.swing.JTextField();
+        spnEdadBusca = new javax.swing.JSpinner();
+        jButton1 = new javax.swing.JButton();
+        scrollConsultaCliente = new javax.swing.JScrollPane();
+        tblCliente = new javax.swing.JTable();
         mnbrMenu = new javax.swing.JMenuBar();
         mnArchivo = new javax.swing.JMenu();
         mnGestionProducto = new javax.swing.JMenu();
@@ -79,34 +101,12 @@ public class MainGUI extends javax.swing.JFrame {
         pnlWorkbench.setLayout(pnlWorkbenchLayout);
         pnlWorkbenchLayout.setHorizontalGroup(
             pnlWorkbenchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 524, Short.MAX_VALUE)
+            .addGap(0, 346, Short.MAX_VALUE)
         );
         pnlWorkbenchLayout.setVerticalGroup(
             pnlWorkbenchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 223, Short.MAX_VALUE)
+            .addGap(0, 216, Short.MAX_VALUE)
         );
-
-        tfdBuscandoDNI.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                tfdBuscandoDNIKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfdBuscandoDNIKeyTyped(evt);
-            }
-        });
-
-        btnBuscarDNI.setText("BuscarTelefono");
-        btnBuscarDNI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarDNIActionPerformed(evt);
-            }
-        });
-
-        pruebaLblTelefono.setText("Prueba: Buscando Telefono por DNI");
-
-        lblBBuscarError.setForeground(new java.awt.Color(255, 102, 102));
-        lblBBuscarError.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblBBuscarError.setText("AQUI VA EL ERROR");
 
         javax.swing.GroupLayout tbpnlVentaLayout = new javax.swing.GroupLayout(tbpnlVenta);
         tbpnlVenta.setLayout(tbpnlVentaLayout);
@@ -120,56 +120,158 @@ public class MainGUI extends javax.swing.JFrame {
                 .addGap(81, 81, 81)
                 .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnNuevoPedido)
-                    .addComponent(pnlWorkbench, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(68, 68, 68)
-                .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(tbpnlVentaLayout.createSequentialGroup()
-                        .addComponent(tfdBuscandoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBuscarDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(pruebaLblTelefono)
-                    .addComponent(lblBBuscarError))
-                .addGap(16, 16, 16))
+                    .addComponent(pnlWorkbench, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         tbpnlVentaLayout.setVerticalGroup(
             tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tbpnlVentaLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblOperacionesRecientes)
+                    .addComponent(btnNuevoPedido))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(tbpnlVentaLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblOperacionesRecientes)
-                            .addComponent(btnNuevoPedido))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlWorkbench, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlOperacionesRecientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(tbpnlVentaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pruebaLblTelefono)
-                        .addGap(4, 4, 4)
-                        .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfdBuscandoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscarDNI))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblBBuscarError)))
+                    .addComponent(pnlOperacionesRecientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlWorkbench, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(380, 380, 380))
         );
 
         jTabbedPane1.addTab("Venta", tbpnlVenta);
 
-        javax.swing.GroupLayout tbpnlRegistroLayout = new javax.swing.GroupLayout(tbpnlRegistro);
-        tbpnlRegistro.setLayout(tbpnlRegistroLayout);
-        tbpnlRegistroLayout.setHorizontalGroup(
-            tbpnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1200, Short.MAX_VALUE)
+        tfdBuscandoDNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfdBuscandoDNIKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfdBuscandoDNIKeyTyped(evt);
+            }
+        });
+
+        pruebaLblTelefono.setText("Prueba: Buscando Telefono por DNI");
+
+        btnBuscarDNI.setText("BuscarTelefono");
+        btnBuscarDNI.setEnabled(false);
+        btnBuscarDNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarDNIActionPerformed(evt);
+            }
+        });
+
+        lblBBuscarError.setForeground(new java.awt.Color(255, 102, 102));
+        lblBBuscarError.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblBBuscarError.setText("AQUI VA EL ERROR");
+
+        jLabel1.setText("Prueba: Buscar Cliente por DNI, Nombre, Apellido, Edad, Telefono");
+
+        jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "DNI", "Nombre", "Apellido", "Edad", "Telefono(s)"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblCliente.getTableHeader().setReorderingAllowed(false);
+        scrollConsultaCliente.setViewportView(tblCliente);
+        if (tblCliente.getColumnModel().getColumnCount() > 0) {
+            tblCliente.getColumnModel().getColumn(0).setResizable(false);
+            tblCliente.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tblCliente.getColumnModel().getColumn(1).setResizable(false);
+            tblCliente.getColumnModel().getColumn(2).setResizable(false);
+            tblCliente.getColumnModel().getColumn(3).setResizable(false);
+            tblCliente.getColumnModel().getColumn(3).setPreferredWidth(100);
+            tblCliente.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        javax.swing.GroupLayout tbpnlConsultasLayout = new javax.swing.GroupLayout(tbpnlConsultas);
+        tbpnlConsultas.setLayout(tbpnlConsultasLayout);
+        tbpnlConsultasLayout.setHorizontalGroup(
+            tbpnlConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tbpnlConsultasLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(tbpnlConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1)
+                    .addGroup(tbpnlConsultasLayout.createSequentialGroup()
+                        .addComponent(tfdBuscandoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBuscarDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pruebaLblTelefono)
+                    .addComponent(lblBBuscarError)
+                    .addGroup(tbpnlConsultasLayout.createSequentialGroup()
+                        .addComponent(tfdDNIBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfdNombreBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfdApellidoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spnEdadBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(123, 123, 123)
+                        .addComponent(jButton1))
+                    .addComponent(scrollConsultaCliente))
+                .addContainerGap(664, Short.MAX_VALUE))
         );
-        tbpnlRegistroLayout.setVerticalGroup(
-            tbpnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 646, Short.MAX_VALUE)
+        tbpnlConsultasLayout.setVerticalGroup(
+            tbpnlConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tbpnlConsultasLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(pruebaLblTelefono)
+                .addGap(4, 4, 4)
+                .addGroup(tbpnlConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfdBuscandoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarDNI))
+                .addGroup(tbpnlConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tbpnlConsultasLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblBBuscarError)
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel1)
+                        .addGroup(tbpnlConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tbpnlConsultasLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(tfdDNIBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(tbpnlConsultasLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(tfdNombreBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(tbpnlConsultasLayout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addGroup(tbpnlConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tfdApellidoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spnEdadBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(tbpnlConsultasLayout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(jButton1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrollConsultaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(308, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Registro", tbpnlRegistro);
+        jTabbedPane1.addTab("Consultas", tbpnlConsultas);
 
         mnArchivo.setText("Archivo");
         mnbrMenu.add(mnArchivo);
@@ -231,13 +333,13 @@ public class MainGUI extends javax.swing.JFrame {
     private void btnBuscarDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarDNIActionPerformed
         //Prueba Telefono
         if (tfdBuscandoDNI.getText().length() > 0) {
-            ModificarTelefono mt = new ModificarTelefono(tfdBuscandoDNI.getText());
+            ConsultarTelefono mt = new ConsultarTelefono(tfdBuscandoDNI.getText());
+            mt.setLocationRelativeTo(rootPane);
             mt.setVisible(true);
         }
     }//GEN-LAST:event_btnBuscarDNIActionPerformed
 
     private void tfdBuscandoDNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfdBuscandoDNIKeyTyped
-        //Verificar el envío de un DNI.
         String texto = tfdBuscandoDNI.getText();
 
         //Acción #01
@@ -251,8 +353,6 @@ public class MainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tfdBuscandoDNIKeyTyped
 
     private void tfdBuscandoDNIKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfdBuscandoDNIKeyReleased
-        // TODO add your handling code here:
-         //Verificar el envío de un DNI.
         String texto = tfdBuscandoDNI.getText();
 
         //Acción #02
@@ -268,6 +368,42 @@ public class MainGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tfdBuscandoDNIKeyReleased
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        tablaModelo.setRowCount(0);
+        var vector = new String[5];
+        ClienteTelefonoDAO cl = new ClienteTelefonoDAO();
+        String sql = "SELECT * FROM Cliente WHERE DNI LIKE ? AND Nombre LIKE ? AND Apellido LIKE ? AND Edad LIKE ?";
+        try {
+            PreparedStatement ps = Conexion.conexionMySQL().prepareStatement(sql);
+            ps.setString(1, tfdDNIBusca.getText() + "%");
+            ps.setString(2, tfdNombreBusca.getText() + "%");
+            ps.setString(3, tfdApellidoBusca.getText() + "%");
+            ps.setString(4, validarSpinner((int)spnEdadBusca.getValue()) + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                //Agregar todos los  telefonos de un Cliente a un solo String.
+                ArrayList<ClienteTelefono> listaClienteTelefono = cl.buscarId(rs.getInt(1));
+                String telefonosString = "";
+                int cont = 0;
+                for (ClienteTelefono entidad : listaClienteTelefono) {
+                    telefonosString += entidad.getTelefono();
+                    if (cont < (listaClienteTelefono.size() - 1)) {
+                        telefonosString += " / ";
+                    }
+                }
+                //Se crea el vector que se agrega a la fila.
+                vector[0] = rs.getString(2);
+                vector[1] = rs.getString(3);
+                vector[2] = rs.getString(4);
+                vector[3] = rs.getString(5);
+                vector[4] = telefonosString;
+                tablaModelo.addRow(vector);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.toString());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private boolean admitirDNI(String texto) {
         for (char ch : texto.toCharArray()) {
             if (!Character.isDigit(ch)) {
@@ -275,6 +411,15 @@ public class MainGUI extends javax.swing.JFrame {
             }
         }
         return true;
+    }
+
+    private String validarSpinner(int edad) {
+        //Si edad es 0 no se toma en cuenta para el filtrado.
+        if (edad != 0) {
+            return String.valueOf(edad);
+        } else {
+            return "";
+        }
     }
 
     public static void setEstadoBtnNuevoPedido(boolean estado) {
@@ -285,6 +430,8 @@ public class MainGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarDNI;
     private static javax.swing.JButton btnNuevoPedido;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblBBuscarError;
     private javax.swing.JLabel lblOperacionesRecientes;
@@ -297,8 +444,14 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnlOperacionesRecientes;
     private javax.swing.JPanel pnlWorkbench;
     private javax.swing.JLabel pruebaLblTelefono;
-    private javax.swing.JPanel tbpnlRegistro;
+    private javax.swing.JScrollPane scrollConsultaCliente;
+    private javax.swing.JSpinner spnEdadBusca;
+    private javax.swing.JTable tblCliente;
+    private javax.swing.JPanel tbpnlConsultas;
     private javax.swing.JPanel tbpnlVenta;
+    private javax.swing.JTextField tfdApellidoBusca;
     private javax.swing.JTextField tfdBuscandoDNI;
+    private javax.swing.JTextField tfdDNIBusca;
+    private javax.swing.JTextField tfdNombreBusca;
     // End of variables declaration//GEN-END:variables
 }

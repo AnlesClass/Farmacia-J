@@ -6,11 +6,11 @@ import DataAccessObject.ClienteDAO;
 import DataAccessObject.ClienteTelefonoDAO;
 import javax.swing.table.DefaultTableModel;
 
-public class ModificarTelefono extends javax.swing.JFrame {
+public class ConsultarTelefono extends javax.swing.JFrame {
 
     private String dniBusca;
 
-    public ModificarTelefono(String dniBusca) {
+    public ConsultarTelefono(String dniBusca) {
         this.dniBusca = dniBusca;
         initComponents();
     }
