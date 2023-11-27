@@ -16,9 +16,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JTextField;
 
-public class AñardirCliente extends javax.swing.JFrame {
+public class AñadirCliente extends javax.swing.JFrame {
 
-    public AñardirCliente() {
+    public AñadirCliente() {
         initComponents();
     }
 
@@ -65,7 +65,7 @@ public class AñardirCliente extends javax.swing.JFrame {
         btnNuevoTelefono = new javax.swing.JToggleButton();
         jlVerficar2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Tabla Registro"));
 
@@ -312,9 +312,9 @@ public class AñardirCliente extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -451,7 +451,7 @@ public class AñardirCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-   
+
     DefaultTableModel dtm0 = null;
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // CrearObjetos
@@ -464,7 +464,7 @@ public class AñardirCliente extends javax.swing.JFrame {
         cliente.setApellido(tfdApellido.getText().trim());
         cliente.setEdad(Integer.parseInt(snrEdad.getValue().toString()));
         clienteT.setTelefono(Integer.parseInt(tfdTelefono.getText().trim()));
-        ArrayList<Cliente> cantidad  = new ArrayList<>();
+        ArrayList<Cliente> cantidad = new ArrayList<>();
         cantidad.add(cliente);
         //Seleccionar metodos de busqueda
 
@@ -475,12 +475,12 @@ public class AñardirCliente extends javax.swing.JFrame {
         if (op2 && op1) {
             jlVerificar.setText("SE AGREGO EXITOSAMENTE");
         }
-        String[] lista  = new String[3];
+        String[] lista = new String[3];
         lista[0] = tfdDNI.getText().trim();
         lista[1] = tfdNombre.getText().trim();
         lista[2] = tfdTelefono.getText().trim();
         for (int i = 0; i < cantidad.size(); i++) {
-           dtm0.addRow(lista);
+            dtm0.addRow(lista);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -575,42 +575,6 @@ public class AñardirCliente extends javax.swing.JFrame {
         aplicarRestriccion(tfdNuevoTelefono, 9, evt);
     }//GEN-LAST:event_tfdNuevoTelefonoKeyTyped
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AñardirCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AñardirCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AñardirCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AñardirCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        try {
-            UIManager.setLookAndFeel(new FlatDarkLaf());
-        } catch (Exception e) {
-        }
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AñardirCliente().setVisible(true);
-
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable JTabla;
     private javax.swing.JTable TablaTelefonos;
@@ -684,8 +648,8 @@ public class AñardirCliente extends javax.swing.JFrame {
             evt.consume();
         } else if (texto.length() > longitudMax) {
             textField.setText("");
-            JOptionPane.showMessageDialog(null, "¡No es posible ingresar más de " + longitudMax + 
-                    " caracteres!", "Ingreso Inválido", 1);
+            JOptionPane.showMessageDialog(null, "¡No es posible ingresar más de " + longitudMax
+                    + " caracteres!", "Ingreso Inválido", 1);
         }
     }
 }

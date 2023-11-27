@@ -14,10 +14,10 @@ public class ProductoDAO implements IOperaciones<Producto> {
     public boolean insertar(Producto entidad) {
         boolean estado = false;
         try {
-            String sql = "INSERT INTO Producto(Nombre,TipoProducto,Descripcion,VentaConReceta,Precio) values (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Producto(IdTipoProducto, Nombre, Descripcion, VentaConReceta, Precio) values (?, ?, ?, ?, ?)";
             PreparedStatement ps = Conexion.conexionMySQL().prepareStatement(sql);
-            ps.setString(1, entidad.getNombre());
-            ps.setString(2, entidad.getTipoProducto());
+            ps.setInt(1, entidad.getIdTipoProducto());
+            ps.setString(2, entidad.getNombre());
             ps.setString(3, entidad.getDescripcion());
             ps.setBoolean(4, entidad.isVentaConReceta());
             ps.setFloat(5, entidad.getPrecio());
@@ -33,11 +33,11 @@ public class ProductoDAO implements IOperaciones<Producto> {
         boolean estado = false;
         try {
             //Tabla producto: TipoProducto, Descripcion, Precio, VentaConReceta
-            String sql = "UPDATE Producto SET Nombre = ?,TipoProducto = ?, Descripcion = ?, VentaConReceta = ?, Precio = ?"
+            String sql = "UPDATE Producto SET  IdTipoProducto = ?,Nombre = ?, Descripcion = ?, VentaConReceta = ?, Precio = ?"
                     + " WHERE idProducto = ?";
             PreparedStatement ps = Conexion.conexionMySQL().prepareStatement(sql);
-            ps.setString(1, entidad.getNombre());
-            ps.setString(2, entidad.getTipoProducto());
+            ps.setInt(1, entidad.getIdTipoProducto());
+            ps.setString(2, entidad.getNombre());
             ps.setString(3, entidad.getDescripcion());
             ps.setBoolean(4, entidad.isVentaConReceta());
             ps.setFloat(5, entidad.getPrecio());
@@ -64,15 +64,15 @@ public class ProductoDAO implements IOperaciones<Producto> {
         return lista;
     }
 
-    private Producto crearEntidad(ResultSet r) {
+    private Producto crearEntidad(ResultSet rs) {
         Producto entidad = new Producto();
         try {
-            entidad.setIdProducto(r.getInt(1));
-            entidad.setNombre(r.getString(2));
-            entidad.setTipoProducto(r.getString(3));
-            entidad.setDescripcion(r.getString(4));
-            entidad.setVentaConReceta(r.getBoolean(5));
-            entidad.setPrecio(r.getFloat(6));
+            entidad.setIdProducto(rs.getInt(1));
+            entidad.setIdTipoProducto(rs.getInt(2));
+            entidad.setNombre(rs.getString(3));
+            entidad.setDescripcion(rs.getString(4));
+            entidad.setVentaConReceta(rs.getBoolean(5));
+            entidad.setPrecio(rs.getFloat(6));
         } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.toString());
         }
