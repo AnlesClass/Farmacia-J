@@ -10,7 +10,6 @@ import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -95,7 +94,9 @@ public class AñardirCliente extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Añadir Cliente"));
@@ -110,6 +111,11 @@ public class AñardirCliente extends javax.swing.JFrame {
         jLabel1.setText("DNI");
 
         tfdNombre.setEnabled(false);
+        tfdNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfdNombreKeyTyped(evt);
+            }
+        });
 
         jLabel2.setText("Nombre ");
 
@@ -119,6 +125,11 @@ public class AñardirCliente extends javax.swing.JFrame {
         tfdApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfdApellidoActionPerformed(evt);
+            }
+        });
+        tfdApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfdApellidoKeyTyped(evt);
             }
         });
 
@@ -135,6 +146,11 @@ public class AñardirCliente extends javax.swing.JFrame {
 
         snrEdad.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
         snrEdad.setEnabled(false);
+        snrEdad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                snrEdadKeyTyped(evt);
+            }
+        });
 
         btnNuevo.setText("NUEVO");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -246,7 +262,7 @@ public class AñardirCliente extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -312,9 +328,9 @@ public class AñardirCliente extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -387,6 +403,7 @@ public class AñardirCliente extends javax.swing.JFrame {
 
         jlVerficar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlVerficar2.setText("VERIFICAR");
+        jlVerficar2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -406,7 +423,7 @@ public class AñardirCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
+                        .addGap(93, 93, 93)
                         .addComponent(jlVerficar2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
@@ -451,36 +468,59 @@ public class AñardirCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-   
+
     DefaultTableModel dtm0 = null;
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // CrearObjetos
-        dtm0 = (DefaultTableModel) JTabla.getModel();
-        ClienteTelefono clienteT = new ClienteTelefono();
-        Cliente cliente = new Cliente();
-        //AgregarDatos
-        cliente.setDni(Integer.parseInt(tfdDNI.getText().trim()));
-        cliente.setNombre(tfdNombre.getText().trim());
-        cliente.setApellido(tfdApellido.getText().trim());
-        cliente.setEdad(Integer.parseInt(snrEdad.getValue().toString()));
-        clienteT.setTelefono(Integer.parseInt(tfdTelefono.getText().trim()));
-        ArrayList<Cliente> cantidad  = new ArrayList<>();
-        cantidad.add(cliente);
-        //Seleccionar metodos de busqueda
+        try {
+            dtm0 = (DefaultTableModel) JTabla.getModel();
+            ClienteTelefono clienteT = new ClienteTelefono();
+            Cliente cliente = new Cliente();
+            //Obtener datos 
 
-        ClienteDAO cliente_Dao = new ClienteDAO();
-        boolean op1 = cliente_Dao.insertar(cliente);
-        int ultimoId = cliente_Dao.ultimoID();
-        boolean op2 = new ClienteTelefonoDAO().insertar(ultimoId, clienteT);
-        if (op2 && op1) {
-            jlVerificar.setText("SE AGREGO EXITOSAMENTE");
-        }
-        String[] lista  = new String[3];
-        lista[0] = tfdDNI.getText().trim();
-        lista[1] = tfdNombre.getText().trim();
-        lista[2] = tfdTelefono.getText().trim();
-        for (int i = 0; i < cantidad.size(); i++) {
-           dtm0.addRow(lista);
+            cliente.setDni(Integer.parseInt(tfdDNI.getText().trim()));
+            cliente.setNombre(tfdNombre.getText().trim());
+            cliente.setApellido(tfdApellido.getText().trim());
+            cliente.setEdad(Integer.parseInt(snrEdad.getValue().toString()));
+            clienteT.setTelefono(Integer.parseInt(tfdTelefono.getText().trim()));
+
+            if (identificar()) {
+                boolean dniExiste = false;
+                for (int i = 0; i < dtm0.getRowCount(); i++) {
+                    if (dtm0.getValueAt(i, 0).equals(tfdDNI.getText().trim())) {
+                        dniExiste = true;
+                        break;
+                    }
+                }
+                if (dniExiste) {
+                    jlVerificar.setText("YA EXISTE ESTE DNI");
+                } 
+                else if(!(tfdDNI.getText().length()==8)){
+                   jlVerificar.setText("FALTAN DATOS EN DNI");
+                }
+                else if(!(tfdTelefono.getText().length()==9)){
+                    jlVerificar.setText("FALTA DATOS EN TELEFONO");
+                }
+                else {
+                    ClienteDAO cliente_Dao = new ClienteDAO();
+                    boolean op1 = cliente_Dao.insertar(cliente);
+                    int ultimoId = cliente_Dao.ultimoID();
+                    boolean op2 = new ClienteTelefonoDAO().insertar(ultimoId, clienteT);
+                    if (op2 && op1) {
+                        String[] lista = new String[3];
+                        lista[0] = tfdDNI.getText().trim();
+                        lista[1] = tfdNombre.getText().trim();
+                        lista[2] = tfdTelefono.getText().trim();
+                        dtm0.addRow(lista);
+                        jlVerificar.setText("SE AGREGO EXITOSAMENTE");
+                    }
+                    limpiar();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "NO PUEDES DEJAR EN ESPACIO VACIO");
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "NO PUEDES DEJAR EN ESPACIO VACIO");
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -498,11 +538,11 @@ public class AñardirCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_tfdApellidoActionPerformed
 
     private void tfdDNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfdDNIKeyTyped
-        aplicarRestriccion(tfdDNI, 8, evt);
+        aplicarRestriccionNumero(tfdDNI, 8, evt);
     }//GEN-LAST:event_tfdDNIKeyTyped
 
     private void tfdTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfdTelefonoKeyTyped
-        aplicarRestriccion(tfdTelefono, 9, evt);
+        aplicarRestriccionNumero(tfdTelefono, 9, evt);
     }//GEN-LAST:event_tfdTelefonoKeyTyped
     DefaultTableModel dtm1 = null;
     DefaultTableModel dtm2 = null;
@@ -526,10 +566,12 @@ public class AñardirCliente extends javax.swing.JFrame {
 
     private void btnBuscaDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaDNIActionPerformed
         try {
-
             if (tfdBuscarDni.getText().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(null, "No dejar vacia", "ERROR", 1);
-            } else {
+            }else if(!(tfdBuscarDni.getText().length()==8)){
+                        JOptionPane.showMessageDialog(null, "FALTAN DATOS EN DNI","ERROR",1);
+                        } 
+            else {
                 tfdNuevoTelefono.setEnabled(true);
                 btnNuevoTelefono.setEnabled(true);
                 dtm2 = (DefaultTableModel) TablaTelefonos.getModel();
@@ -563,17 +605,28 @@ public class AñardirCliente extends javax.swing.JFrame {
         entidad_Telefono.setTelefono(Integer.parseInt(tfdNuevoTelefono.getText().trim()));
         boolean cliente_dao = new ClienteTelefonoDAO().insertar(entidad.getIdCliente(), entidad_Telefono);
 
-        jlVerficar2.setText("SE AGREGO EL NUMERO " + tfdNuevoTelefono.getText());
+        jlVerficar2.setText("SE AGREGO EL NUMERO: " + tfdNuevoTelefono.getText());
 
     }//GEN-LAST:event_btnNuevoTelefonoActionPerformed
 
     private void tfdBuscarDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfdBuscarDniKeyTyped
-        aplicarRestriccion(tfdBuscarDni, 8, evt);
+        aplicarRestriccionNumero(tfdBuscarDni, 8, evt);
     }//GEN-LAST:event_tfdBuscarDniKeyTyped
 
     private void tfdNuevoTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfdNuevoTelefonoKeyTyped
-        aplicarRestriccion(tfdNuevoTelefono, 9, evt);
+        aplicarRestriccionNumero(tfdNuevoTelefono, 9, evt);
     }//GEN-LAST:event_tfdNuevoTelefonoKeyTyped
+
+    private void tfdNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfdNombreKeyTyped
+        aplicarRestriccionCadena(evt);
+    }//GEN-LAST:event_tfdNombreKeyTyped
+
+    private void tfdApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfdApellidoKeyTyped
+        aplicarRestriccionCadena(evt);
+    }//GEN-LAST:event_tfdApellidoKeyTyped
+
+    private void snrEdadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_snrEdadKeyTyped
+    }//GEN-LAST:event_snrEdadKeyTyped
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -671,7 +724,7 @@ public class AñardirCliente extends javax.swing.JFrame {
         snrEdad.setValue(0);
     }
 
-    private void aplicarRestriccion(JTextField textField, int longitudMax, KeyEvent evt) {
+    private void aplicarRestriccionNumero(JTextField textField, int longitudMax, KeyEvent evt) {
         char caracter = evt.getKeyChar();
 
         // Verificar si el carácter es un dígito numérico
@@ -684,8 +737,29 @@ public class AñardirCliente extends javax.swing.JFrame {
             evt.consume();
         } else if (texto.length() > longitudMax) {
             textField.setText("");
-            JOptionPane.showMessageDialog(null, "¡No es posible ingresar más de " + longitudMax + 
-                    " caracteres!", "Ingreso Inválido", 1);
+            JOptionPane.showMessageDialog(null, "¡No es posible ingresar más de " + longitudMax
+                    + " caracteres!", "Ingreso Inválido", 1);
+        }
+    }
+
+    private void aplicarRestriccionCadena(KeyEvent evt) {
+        char caracter = evt.getKeyChar();
+        if (!Character.isLetter(caracter) && caracter != KeyEvent.VK_SPACE) {
+            evt.consume(); // Consumir el evento para evitar que se ingrese el carácter
+        }
+    }
+
+    private boolean identificar() {
+        try {
+            return tfdDNI.getText().length() > 0
+                    && tfdNombre.getText().length() > 0
+                    && tfdApellido.getText().length() > 0
+                    && tfdTelefono.getText().length() > 0
+                    && !snrEdad.getValue().toString().isEmpty();
+
+        } catch (Exception e) {
+            System.out.println("ERROR");
+        return false;
         }
     }
 }
