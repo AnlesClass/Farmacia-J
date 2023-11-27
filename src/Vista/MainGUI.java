@@ -34,12 +34,14 @@ public class MainGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tbdPanePrograma = new javax.swing.JTabbedPane();
         tbpnlVenta = new javax.swing.JPanel();
         lblOperacionesRecientes = new javax.swing.JLabel();
         btnNuevoPedido = new javax.swing.JButton();
         pnlOperacionesRecientes = new javax.swing.JPanel();
         pnlWorkbench = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
         tbpnlConsultas = new javax.swing.JPanel();
         tfdBuscandoDNI = new javax.swing.JTextField();
         pruebaLblTelefono = new javax.swing.JLabel();
@@ -53,6 +55,8 @@ public class MainGUI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         scrollConsultaCliente = new javax.swing.JScrollPane();
         tblCliente = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         mnbrMenu = new javax.swing.JMenuBar();
         mnArchivo = new javax.swing.JMenu();
         mnGestionProducto = new javax.swing.JMenu();
@@ -82,7 +86,7 @@ public class MainGUI extends javax.swing.JFrame {
         pnlOperacionesRecientes.setLayout(pnlOperacionesRecientesLayout);
         pnlOperacionesRecientesLayout.setHorizontalGroup(
             pnlOperacionesRecientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 199, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         pnlOperacionesRecientesLayout.setVerticalGroup(
             pnlOperacionesRecientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,20 +107,46 @@ public class MainGUI extends javax.swing.JFrame {
             .addGap(0, 216, Short.MAX_VALUE)
         );
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 670, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 320, Short.MAX_VALUE)
+        );
+
+        jButton3.setText("Mostrar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout tbpnlVentaLayout = new javax.swing.GroupLayout(tbpnlVenta);
         tbpnlVenta.setLayout(tbpnlVentaLayout);
         tbpnlVentaLayout.setHorizontalGroup(
             tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tbpnlVentaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblOperacionesRecientes)
-                    .addComponent(pnlOperacionesRecientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlOperacionesRecientes, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlWorkbench, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNuevoPedido))
-                .addGap(538, 538, 538))
+                    .addGroup(tbpnlVentaLayout.createSequentialGroup()
+                        .addComponent(btnNuevoPedido)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblOperacionesRecientes))
+                    .addGroup(tbpnlVentaLayout.createSequentialGroup()
+                        .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(pnlWorkbench, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         tbpnlVentaLayout.setVerticalGroup(
             tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,15 +157,19 @@ public class MainGUI extends javax.swing.JFrame {
                     .addComponent(btnNuevoPedido))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlOperacionesRecientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(tbpnlVentaLayout.createSequentialGroup()
-                        .addComponent(pnlWorkbench, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(tbpnlVentaLayout.createSequentialGroup()
-                        .addComponent(pnlOperacionesRecientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addGroup(tbpnlVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tbpnlVentaLayout.createSequentialGroup()
+                                .addComponent(pnlWorkbench, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton3))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 279, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Venta", tbpnlVenta);
+        tbdPanePrograma.addTab("Venta", tbpnlVenta);
 
         tbpnlConsultas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -211,6 +245,15 @@ public class MainGUI extends javax.swing.JFrame {
             tblCliente.getColumnModel().getColumn(4).setResizable(false);
         }
 
+        jLabel2.setText("Prueba: Registro Cliente");
+
+        jButton2.setText("Registrar Cliente");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout tbpnlConsultasLayout = new javax.swing.GroupLayout(tbpnlConsultas);
         tbpnlConsultas.setLayout(tbpnlConsultasLayout);
         tbpnlConsultasLayout.setHorizontalGroup(
@@ -218,25 +261,28 @@ public class MainGUI extends javax.swing.JFrame {
             .addGroup(tbpnlConsultasLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(tbpnlConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2)
+                    .addComponent(jLabel2)
                     .addComponent(pruebaLblTelefono)
                     .addGroup(tbpnlConsultasLayout.createSequentialGroup()
                         .addComponent(tfdBuscandoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(btnBuscarDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblBBuscarError)
-                    .addComponent(jLabel1)
-                    .addGroup(tbpnlConsultasLayout.createSequentialGroup()
-                        .addComponent(tfdDNIBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(tfdNombreBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(tfdApellidoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(spnEdadBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(123, 123, 123)
-                        .addComponent(jButton1))
-                    .addComponent(scrollConsultaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(484, 484, 484))
+                    .addGroup(tbpnlConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(scrollConsultaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
+                        .addGroup(tbpnlConsultasLayout.createSequentialGroup()
+                            .addComponent(tfdDNIBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(6, 6, 6)
+                            .addComponent(tfdNombreBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(6, 6, 6)
+                            .addComponent(tfdApellidoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(6, 6, 6)
+                            .addComponent(spnEdadBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(123, 123, 123)
+                            .addComponent(jButton1))))
+                .addContainerGap(484, Short.MAX_VALUE))
         );
         tbpnlConsultasLayout.setVerticalGroup(
             tbpnlConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,12 +304,16 @@ public class MainGUI extends javax.swing.JFrame {
                     .addComponent(tfdApellidoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(spnEdadBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addGap(12, 12, 12)
+                .addGap(17, 17, 17)
                 .addComponent(scrollConsultaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(305, 305, 305))
+                .addGap(29, 29, 29)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addGap(225, 225, 225))
         );
 
-        jTabbedPane1.addTab("Consultas", tbpnlConsultas);
+        tbdPanePrograma.addTab("Consultas", tbpnlConsultas);
 
         mnArchivo.setText("Archivo");
         mnbrMenu.add(mnArchivo);
@@ -282,7 +332,7 @@ public class MainGUI extends javax.swing.JFrame {
         mnitModificarProducto.setText("Modificar Producto");
         mnGestionProducto.add(mnitModificarProducto);
 
-        mnitBorrarProducto.setText("Borrar Producto");
+        mnitBorrarProducto.setText("Cambiar Estado");
         mnGestionProducto.add(mnitBorrarProducto);
 
         mnbrMenu.add(mnGestionProducto);
@@ -293,11 +343,11 @@ public class MainGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(tbdPanePrograma)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(tbdPanePrograma)
         );
 
         pack();
@@ -391,6 +441,18 @@ public class MainGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //Abrir ventana de Marco
+        AñadirCliente ac = new AñadirCliente();
+        ac.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        PnlInsertarProducto pip = new PnlInsertarProducto();
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     private String validarSpinner(int edad) {
         //Si edad es 0 no se toma en cuenta para el filtrado.
         if (edad != 0) {
@@ -409,8 +471,11 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarDNI;
     private static javax.swing.JButton btnNuevoPedido;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBBuscarError;
     private javax.swing.JLabel lblOperacionesRecientes;
     private javax.swing.JMenu mnArchivo;
@@ -424,6 +489,7 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JLabel pruebaLblTelefono;
     private javax.swing.JScrollPane scrollConsultaCliente;
     private javax.swing.JSpinner spnEdadBusca;
+    private javax.swing.JTabbedPane tbdPanePrograma;
     private javax.swing.JTable tblCliente;
     private javax.swing.JPanel tbpnlConsultas;
     private javax.swing.JPanel tbpnlVenta;
