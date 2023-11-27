@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ClienteDAO implements IOperaciones<Cliente> {
 
@@ -90,6 +92,27 @@ public class ClienteDAO implements IOperaciones<Cliente> {
             System.out.println("Error al crear entidad 'Cliente': " + ex.toString());
         }
         return cliente;
+    }
+
+    public Cliente getClientePorDNI(String dni) {
+        Cliente cl = new Cliente();
+        String sql = "SELECT C.IdCliente, C.DNI, C.Nombre, C.Apellido, C.Edad FROM Cliente C WHERE DNI = ?;";
+        try {
+            PreparedStatement ps = Conexion.conexionMySQL().prepareStatement(sql);
+            ps.setString(1, dni);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                cl.setIdCliente(rs.getInt(1));
+                cl.setDni(rs.getInt(2));
+                cl.setNombre(rs.getString(3));
+                cl.setApellido(rs.getString(4));
+                cl.setEdad(rs.getInt(5));
+            }
+            return cl;
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.toString());
+            return cl;
+        }
     }
 
     public int ultimoID() {
