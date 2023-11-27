@@ -68,10 +68,4 @@ public class FacturaDAO implements IOperaciones<Factura> {
         }
         return entidad;
     }
-
-    @Override
-    public ArrayList<Factura> buscarId(int busca) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
 }

@@ -1,7 +1,6 @@
 package DataAccessObject;
 
 import BusinessObject.Cliente;
-import BusinessObject.ClienteTelefono;
 import Persistencia.Conexion;
 import TransferObject.IOperaciones;
 import java.util.ArrayList;
@@ -65,25 +64,18 @@ public class ClienteDAO implements IOperaciones<Cliente> {
         return lista;
     }
 
-    @Override
-    public ArrayList<Cliente> buscarId(int busca) {
-        return null;
-    }
-
-    public Cliente buscarDNI(String busca) {
-        Cliente entidad = new Cliente();
+    public ResultSet buscarPorDNI(String DNI) {
+        ResultSet rs = null;
+        String sql = "SELECT C.Nombre, CT.Telefono FROM Cliente C INNER JOIN ClienteTelefono"
+                + " CT ON C.IdCliente = CT.IdCliente WHERE C.DNI = ?;";
         try {
-            String sql = "SELECT * FROM Cliente WHERE DNI = ?";
             PreparedStatement ps = Conexion.conexionMySQL().prepareStatement(sql);
-            ps.setString(1, busca);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                entidad = crearEntidad(rs);
-            }
+            ps.setString(1, DNI);
+            rs = ps.executeQuery();
         } catch (SQLException ex) {
-            System.out.println("ERROR BUSCAR: " + ex.toString());
+            System.out.println("Error al 'buscarPorDNI': " + ex.toString());
         }
-        return entidad;
+        return rs;
     }
 
     private Cliente crearEntidad(ResultSet rs) {

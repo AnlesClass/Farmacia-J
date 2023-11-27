@@ -47,8 +47,7 @@ public class ClienteTelefonoDAO implements IOperaciones<ClienteTelefono> {
     public ArrayList<ClienteTelefono> listarTodo() {
         return null;
     }
-
-    @Override
+    
     public ArrayList<ClienteTelefono> buscarId(int busca) {
         var lista = new ArrayList<ClienteTelefono>();
         try {

@@ -5,7 +5,6 @@ import BusinessObject.ClienteTelefono;
 import DataAccessObject.ClienteDAO;
 import DataAccessObject.ClienteTelefonoDAO;
 import com.formdev.flatlaf.FlatDarkLaf;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -321,7 +320,7 @@ public class AñardirCliente extends javax.swing.JFrame {
         } else if (texto.length() > 8) {
             tfdDNI.setText("");
             JOptionPane.showMessageDialog(null, "¡No es posible "
-                + "ingresar más de 8 caracteres!", "Ingreso Inválido", 1);
+                    + "ingresar más de 8 caracteres!", "Ingreso Inválido", 1);
         }
     }//GEN-LAST:event_tfdDNIKeyTyped
 
@@ -332,7 +331,7 @@ public class AñardirCliente extends javax.swing.JFrame {
         } else if (texto.length() > 9) {
             tfdDNI.setText("");
             JOptionPane.showMessageDialog(null, "¡No es posible "
-                + "ingresar más de 9 caracteres!", "Ingreso Inválido", 1);
+                    + "ingresar más de 9 caracteres!", "Ingreso Inválido", 1);
         }
     }//GEN-LAST:event_tfdTelefonoKeyTyped
 
@@ -360,7 +359,7 @@ public class AñardirCliente extends javax.swing.JFrame {
         }
         //</editor-fold>
         try {
-        UIManager.setLookAndFeel(new FlatDarkLaf());    
+            UIManager.setLookAndFeel(new FlatDarkLaf());
         } catch (Exception e) {
         }
         /* Create and display the form */
@@ -406,7 +405,6 @@ public class AñardirCliente extends javax.swing.JFrame {
         snrEdad.setEnabled(opcion);
         btnGuardar.setEnabled(opcion);
         btnNuevo.setText(texto);
-
     }
 
     private void limpiar() {
