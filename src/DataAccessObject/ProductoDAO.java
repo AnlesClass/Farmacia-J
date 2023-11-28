@@ -78,4 +78,21 @@ public class ProductoDAO implements IOperaciones<Producto> {
         }
         return entidad;
     }
+    //METODO BUSCAR POR NOMBRE Y DESCRIPCION (ID, nombre,Descripcion, Tipo, Receta, Precio);
+    public ResultSet BuscarProducto(String nombre, String descripcion){
+        ResultSet rs = null;
+        try {
+            String sql  = "SELECT P.IdProducto, P.Nombre, P.Descripcion, TP.Nombre, P.Precio, P.VentaConReceta FROM "
+                    + "Producto P JOIN TipoProducto TP ON TP.IdTipoProducto = P.IdTipoProducto WHERE P.Nombre LIKE ?"
+                    + "AND P.Descripcion LIKE ?";
+            PreparedStatement ps = Conexion.conexionMySQL().prepareStatement(sql);
+            ps.setString(1,  nombre +  "%");
+            ps.setString(2, descripcion + "%");
+            rs= ps.executeQuery();
+            return rs;
+        } catch (SQLException ex) {
+            System.out.println("ERROR: "  + ex.toString()); 
+        }
+        return rs;
+    }
 }
