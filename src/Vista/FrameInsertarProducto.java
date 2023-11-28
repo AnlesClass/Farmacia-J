@@ -3,17 +3,17 @@ package Vista;
 import BusinessObject.Producto;
 import DataAccessObject.ProductoDAO;
 import Persistencia.Conexion;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 
-public class PnlInsertarProducto extends javax.swing.JPanel {
+public class FrameInsertarProducto extends javax.swing.JFrame {
 
     DefaultTableModel dtm;
-
-    public PnlInsertarProducto() {
+    
+    public FrameInsertarProducto() {
         initComponents();
         dtm = (DefaultTableModel) JTabla.getModel();
     }
@@ -46,7 +46,7 @@ public class PnlInsertarProducto extends javax.swing.JPanel {
         JTabla = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
-        setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(168, 168, 168), 1, true), "Añadir Producto"));
 
@@ -222,8 +222,8 @@ public class PnlInsertarProducto extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -246,9 +246,22 @@ public class PnlInsertarProducto extends javax.swing.JPanel {
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlTablaRegistroProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void comboxCategoríaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboxCategoríaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboxCategoríaActionPerformed
+
+    private void comboxCategoríaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_comboxCategoríaPropertyChange
+        // TODO add your handling code here:
+        /*if ((boolean) evt.getNewValue()) {
+            System.out.println("ESTÁ FUNCIONANDOOOO");
+        }*/
+    }//GEN-LAST:event_comboxCategoríaPropertyChange
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         if (btnNuevo.getText().trim().equalsIgnoreCase("nuevo")) {
@@ -258,23 +271,6 @@ public class PnlInsertarProducto extends javax.swing.JPanel {
         }
         limpiar();
     }//GEN-LAST:event_btnNuevoActionPerformed
-
-    private void CambiarFuncion(String texto, boolean opcion) {
-        tfdNombre.setEnabled(opcion);
-        txtPaneDescripcion.setEnabled(opcion);
-        snrPrecio.setEnabled(opcion);
-        chboxVentaConReceta.setEnabled(opcion);
-        comboxCategoría.setEnabled(opcion);
-        btnGuardar.setEnabled(opcion);
-        btnNuevo.setText(texto);
-    }
-
-    private void limpiar() {
-        tfdNombre.setText(null);
-        txtPaneDescripcion.setText(null);
-        snrPrecio.setValue(0.1);
-        chboxVentaConReceta.setSelected(false);
-    }
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         if (!tfdNombre.getText().trim().isEmpty() & !txtPaneDescripcion.getText().trim().isEmpty()) {
@@ -315,6 +311,27 @@ public class PnlInsertarProducto extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        refreshTablaRegistroProducto();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void CambiarFuncion(String texto, boolean opcion) {
+        tfdNombre.setEnabled(opcion);
+        txtPaneDescripcion.setEnabled(opcion);
+        snrPrecio.setEnabled(opcion);
+        chboxVentaConReceta.setEnabled(opcion);
+        comboxCategoría.setEnabled(opcion);
+        btnGuardar.setEnabled(opcion);
+        btnNuevo.setText(texto);
+    }
+
+    private void limpiar() {
+        tfdNombre.setText(null);
+        txtPaneDescripcion.setText(null);
+        snrPrecio.setValue(0.1);
+        chboxVentaConReceta.setSelected(false);
+    }
+    
     private void refreshTablaRegistroProducto() {
         String sql = "SELECT Nombre, Precio, VentaConReceta FROM Producto;";
         try {
@@ -332,23 +349,7 @@ public class PnlInsertarProducto extends javax.swing.JPanel {
             System.out.println("Error en método 'refreshTablaRegistroProducto': " + ex.toString());
         }
     }
-
-    private void comboxCategoríaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboxCategoríaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboxCategoríaActionPerformed
-
-    private void comboxCategoríaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_comboxCategoríaPropertyChange
-        // TODO add your handling code here:
-        /*if ((boolean) evt.getNewValue()) {
-            System.out.println("ESTÁ FUNCIONANDOOOO");
-        }*/
-    }//GEN-LAST:event_comboxCategoríaPropertyChange
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        refreshTablaRegistroProducto();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable JTabla;
     private javax.swing.JButton btnGuardar;
