@@ -20,18 +20,18 @@ public class BusquedaPedidoId extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TablaPedido = new javax.swing.JTable();
-        btnBuscarIdPedido = new javax.swing.JToggleButton();
-        tfdBuscarIdPedido = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        JLVerificar = new javax.swing.JLabel();
+        scrollBuscaPedido = new javax.swing.JScrollPane();
+        tblBuscaPedido = new javax.swing.JTable();
+        btnBuscaPedido = new javax.swing.JToggleButton();
+        tfdBuscaPedido = new javax.swing.JTextField();
+        lblBuscarIdPorPedido = new javax.swing.JLabel();
+        lblBuscaPedido = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Buscar Pedido", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 18))); // NOI18N
 
-        TablaPedido.setModel(new javax.swing.table.DefaultTableModel(
+        tblBuscaPedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -47,27 +47,27 @@ public class BusquedaPedidoId extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(TablaPedido);
-        if (TablaPedido.getColumnModel().getColumnCount() > 0) {
-            TablaPedido.getColumnModel().getColumn(0).setMaxWidth(60);
+        scrollBuscaPedido.setViewportView(tblBuscaPedido);
+        if (tblBuscaPedido.getColumnModel().getColumnCount() > 0) {
+            tblBuscaPedido.getColumnModel().getColumn(0).setMaxWidth(60);
         }
 
-        btnBuscarIdPedido.setText("BUSCAR");
-        btnBuscarIdPedido.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscaPedido.setText("BUSCAR");
+        btnBuscaPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarIdPedidoActionPerformed(evt);
+                btnBuscaPedidoActionPerformed(evt);
             }
         });
 
-        tfdBuscarIdPedido.addKeyListener(new java.awt.event.KeyAdapter() {
+        tfdBuscaPedido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfdBuscarIdPedidoKeyTyped(evt);
+                tfdBuscaPedidoKeyTyped(evt);
             }
         });
 
-        jLabel1.setText("Buscar por ID del pedido: ");
+        lblBuscarIdPorPedido.setText("Buscar por ID del pedido: ");
 
-        JLVerificar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBuscaPedido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -76,30 +76,31 @@ public class BusquedaPedidoId extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scrollBuscaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                            .addComponent(lblBuscarIdPorPedido)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(tfdBuscarIdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfdBuscaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
-                                .addComponent(btnBuscarIdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnBuscaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JLVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblBuscaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(lblBuscarIdPorPedido)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBuscarIdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfdBuscarIdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JLVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblBuscaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnBuscaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfdBuscaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollBuscaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -123,19 +124,19 @@ public class BusquedaPedidoId extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 DefaultTableModel dtm = null;
-    private void btnBuscarIdPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarIdPedidoActionPerformed
+    private void btnBuscaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaPedidoActionPerformed
         try {
-            dtm = (DefaultTableModel) TablaPedido.getModel();
-            ResultSet detalleDAO = new DetallePedidoDAO().buscarPorIdCliente(Integer.parseInt(tfdBuscarIdPedido.getText().toString()));
+            dtm = (DefaultTableModel) tblBuscaPedido.getModel();
+            ResultSet detalleDAO = new DetallePedidoDAO().buscarPorIdCliente(Integer.parseInt(tfdBuscaPedido.getText().toString()));
             
             if (!detalleDAO.next()) {
-                JLVerificar.setText("RESULTADO NO ENCONTRADO:");
-                JLVerificar.setForeground(Color.RED);
+                lblBuscaPedido.setText("RESULTADO NO ENCONTRADO:");
+                lblBuscaPedido.setForeground(Color.RED);
                 dtm.setRowCount(0);
                 return; 
             }
-            JLVerificar.setText("RESULTADO DE PEDIDO:");
-            JLVerificar.setForeground(Color.BLUE);
+            lblBuscaPedido.setText("RESULTADO DE PEDIDO:");
+            lblBuscaPedido.setForeground(Color.BLUE);
             
             String[] lista = new String[5];
             dtm.setRowCount(0);
@@ -151,9 +152,9 @@ DefaultTableModel dtm = null;
             Logger.getLogger(BusquedaPedidoId.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }//GEN-LAST:event_btnBuscarIdPedidoActionPerformed
+    }//GEN-LAST:event_btnBuscaPedidoActionPerformed
 
-    private void tfdBuscarIdPedidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfdBuscarIdPedidoKeyTyped
+    private void tfdBuscaPedidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfdBuscaPedidoKeyTyped
         char caracter = evt.getKeyChar();
 
         // Verificar si el carácter es un dígito numérico
@@ -161,16 +162,16 @@ DefaultTableModel dtm = null;
             evt.consume();
             return;
         }
-        String texto = tfdBuscarIdPedido.getText();
+        String texto = tfdBuscaPedido.getText();
         if (texto.length() == 1000) {
             evt.consume();
         } else if (texto.length() > 1000) {
-            tfdBuscarIdPedido.setText("");
+            tfdBuscaPedido.setText("");
             JOptionPane.showMessageDialog(null, "¡No es posible ingresar más de " + 1000
                     + " caracteres!", "Ingreso Inválido", 1);
         }
 
-    }//GEN-LAST:event_tfdBuscarIdPedidoKeyTyped
+    }//GEN-LAST:event_tfdBuscaPedidoKeyTyped
 
     /**
      * @param args the command line arguments
@@ -208,12 +209,12 @@ DefaultTableModel dtm = null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel JLVerificar;
-    private javax.swing.JTable TablaPedido;
-    private javax.swing.JToggleButton btnBuscarIdPedido;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JToggleButton btnBuscaPedido;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField tfdBuscarIdPedido;
+    private javax.swing.JLabel lblBuscaPedido;
+    private javax.swing.JLabel lblBuscarIdPorPedido;
+    private javax.swing.JScrollPane scrollBuscaPedido;
+    private javax.swing.JTable tblBuscaPedido;
+    private javax.swing.JTextField tfdBuscaPedido;
     // End of variables declaration//GEN-END:variables
 }

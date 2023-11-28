@@ -16,8 +16,9 @@ public class PedidoDAO implements IOperaciones<Pedido> {
     public boolean insertar(Pedido entidad) {
         boolean estado = false;
         try {
-            PreparedStatement ps = Conexion.conexionMySQL().prepareStatement("INSERT INTO Pedido(FechaPedido) values (?)");
-            ps.setDate(1, Date.valueOf(entidad.getFechaPedido()));
+            PreparedStatement ps = Conexion.conexionMySQL().prepareStatement("INSERT INTO Pedido(IdCliente, FechaPedido) values (?, ?)");
+            ps.setInt(1, entidad.getIdCliente());
+            ps.setDate(2, Date.valueOf(entidad.getFechaPedido()));       
             estado = ps.executeUpdate() > 0;
         } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.toString());

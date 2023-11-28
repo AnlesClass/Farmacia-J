@@ -12,6 +12,7 @@ public class Main {
             UIManager.setLookAndFeel(new FlatDarkLaf());
             MainGUI ventana = new MainGUI();
             ventana.setLocationRelativeTo(null);
+            ventana.setSize(640, 550);
             ventana.setVisible(true);
         } catch (UnsupportedLookAndFeelException ex) {
         }

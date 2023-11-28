@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ClienteDAO implements IOperaciones<Cliente> {
 
@@ -26,7 +24,6 @@ public class ClienteDAO implements IOperaciones<Cliente> {
         } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.toString());
         }
-
         return estado;
     }
 

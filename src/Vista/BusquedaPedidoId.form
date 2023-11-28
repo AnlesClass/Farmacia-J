@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -61,18 +61,18 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" alignment="0" min="-2" pref="631" max="-2" attributes="0"/>
+                      <Component id="scrollBuscaPedido" alignment="0" min="-2" pref="631" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblBuscarIdPorPedido" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="tfdBuscarIdPedido" min="-2" pref="248" max="-2" attributes="0"/>
+                                  <Component id="tfdBuscaPedido" min="-2" pref="248" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                  <Component id="btnBuscarIdPedido" min="-2" pref="107" max="-2" attributes="0"/>
+                                  <Component id="btnBuscaPedido" min="-2" pref="107" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="JLVerificar" min="-2" pref="252" max="-2" attributes="0"/>
+                          <Component id="lblBuscaPedido" min="-2" pref="252" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -83,29 +83,31 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblBuscarIdPorPedido" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnBuscarIdPedido" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="tfdBuscarIdPedido" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="JLVerificar" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblBuscaPedido" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnBuscaPedido" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="tfdBuscaPedido" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="395" max="-2" attributes="0"/>
+                  <Component id="scrollBuscaPedido" min="-2" pref="395" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+        <Container class="javax.swing.JScrollPane" name="scrollBuscaPedido">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="TablaPedido">
+            <Component class="javax.swing.JTable" name="tblBuscaPedido">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="5" rowCount="0">
@@ -152,25 +154,25 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JToggleButton" name="btnBuscarIdPedido">
+        <Component class="javax.swing.JToggleButton" name="btnBuscaPedido">
           <Properties>
             <Property name="text" type="java.lang.String" value="BUSCAR"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarIdPedidoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscaPedidoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="tfdBuscarIdPedido">
+        <Component class="javax.swing.JTextField" name="tfdBuscaPedido">
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfdBuscarIdPedidoKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfdBuscaPedidoKeyTyped"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="lblBuscarIdPorPedido">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar por ID del pedido: "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="JLVerificar">
+        <Component class="javax.swing.JLabel" name="lblBuscaPedido">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>

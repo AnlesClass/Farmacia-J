@@ -112,7 +112,7 @@ public class PedidoProducto extends javax.swing.JFrame {
                 comboxProducto.addItem(rs.getString(1));
             }
         } catch (SQLException ex) {
-            System.out.println("Error: " + ex.toString());
+            System.out.println("Error al 'Rellenar Combox': " + ex.toString());
         }
     }
 
